@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>A10 - Cookies</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>JavaScript Cookies</h1>
+
+    <p>This page demonstrates how cookies work.</p>
+
+    <h2 id="message"></h2>
+
+    <script>
+        let username = document.cookie;
+
+        if (username == "") {
+            username = prompt("Enter your name:");
+
+            if (username != null && username.trim() != "") {
+                username = username.trim();
+
+                document.cookie = "username=" + encodeURIComponent(username) + "; max-age=604800; path=/";
+
+                document.getElementById("message").innerHTML =
+                    "Welcome, " + username + "!";
+            }
+        } else {
+            username = decodeURIComponent(username.split("=")[1]);
+
+            document.getElementById("message").innerHTML =
+                "Welcome back, " + username + "!";
+        }
+    </script>
+
+    <footer>
+        <p>&copy; 2026 Harshdeep Singh | A10 | November 17, 2026</p>
+    </footer>
+
+</body>
+</html>
